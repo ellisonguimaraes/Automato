@@ -13,7 +13,7 @@ Os nomes dos identificadores tem por padrão as seguintes regras de escrita:
 - Iniciam com uma letra do alfabeto, seja maiúscula ou minúscula;
 - Todos os outros caracteres podem conter letras do alfabeto e números.
 
-Com isso, tem expressão regulador do tipo: `[a-zA-Z] . [a-zA-Z0-9]*`. E autômato finito determinístico, sendo `|Q| = 2` e o estado final sendo somente o estado **1**:
+Com isso, tem expressão regular do tipo: `[a-zA-Z] . [a-zA-Z0-9]*`. E autômato finito determinístico, sendo `|Q| = 2` e o estado final sendo somente o estado **1**:
 
 
 
