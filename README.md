@@ -17,7 +17,7 @@ Com isso, tem expressão regulador do tipo: `[a-zA-Z] . [a-zA-Z0-9]*`. E autôma
 
 
 
-![AFDidentificadores](AFDidentificadores.png)
+![AFDidentificadores](img/AFDidentificadores.png)
 
 
 
@@ -34,7 +34,7 @@ Com funções de transição:
 
 
 
-![AFDoperadores](AFDoperadores.png)
+![AFDoperadores](img/AFDoperadores.png)
 
 
 
