@@ -1,3 +1,2 @@
-a + b - c
-a * c - a
-a - b * c
+a + b * c
+c - b / a

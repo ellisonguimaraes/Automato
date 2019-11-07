@@ -17,14 +17,16 @@ class Automato:
         for f in estados_finais:
             self.estados_finais[f] = True
 
-    def aceita_cadeia(self, cadeia):
+    def retorna_cadeia(self, cadeia):
         estado = 0
+        caracter_final = 0
         try:
             for c in cadeia:
                 estado = self.transicoes[estado][c]
-            return self.estados_finais[estado]
+                caracter_final += 1
+            return caracter_final
         except KeyError:
-            return False
+            return caracter_final
 
 
 # Alfabeto (maiúsculo e minúsculo)
@@ -40,33 +42,47 @@ AF_subt = Automato(2, [1], (0, ['-'], 1))
 AF_divi = Automato(2, [1], (0, ['/'], 1))
 AF_mult = Automato(2, [1], (0, ['*'], 1))
 
-# Lendo arquivo de entrada input.txt e separando numa lista
+# Lendo arquivo de entrada input.txt
 with open('input.txt', 'r') as file:
-    instrucoes = file.read().split()
+    instrucoes = file.read()
 
 # Gerando tokens a partir dos automatos
 tokens = []
-for palavra in instrucoes:
 
-    if AF_identificador.aceita_cadeia(palavra):
+# Percorrendo o input.txt e reconhecendo os automatos
+while instrucoes:
+    palavra = instrucoes[:AF_identificador.retorna_cadeia(instrucoes)]
+    if palavra:
         tokens.append(f'<identificador, {palavra}>\n')
+        instrucoes = instrucoes[AF_identificador.retorna_cadeia(instrucoes):]
         continue
 
-    if AF_soma.aceita_cadeia(palavra):
+    palavra = instrucoes[:AF_soma.retorna_cadeia(instrucoes)]
+    if palavra:
         tokens.append(f'<soma,>\n')
+        instrucoes = instrucoes[AF_soma.retorna_cadeia(instrucoes):]
         continue
 
-    if AF_subt.aceita_cadeia(palavra):
+    palavra = instrucoes[:AF_subt.retorna_cadeia(instrucoes)]
+    if palavra:
         tokens.append(f'<sub,>\n')
+        instrucoes = instrucoes[AF_subt.retorna_cadeia(instrucoes):]
         continue
 
-    if AF_divi.aceita_cadeia(palavra):
+    palavra = instrucoes[:AF_divi.retorna_cadeia(instrucoes)]
+    if palavra:
         tokens.append(f'<div,>\n')
+        instrucoes = instrucoes[AF_divi.retorna_cadeia(instrucoes):]
         continue
 
-    if AF_mult.aceita_cadeia(palavra):
+    palavra = instrucoes[:AF_mult.retorna_cadeia(instrucoes)]
+    if palavra:
         tokens.append(f'<mult,>\n')
+        instrucoes = instrucoes[AF_mult.retorna_cadeia(instrucoes):]
         continue
+
+    instrucoes = instrucoes[1:]
+
 
 # Escrevendo no arquivo output.txt.
 with open('output.txt', 'w') as file:

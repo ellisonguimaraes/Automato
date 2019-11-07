@@ -1,15 +1,10 @@
 <identificador, a>
 <soma,>
 <identificador, b>
-<sub,>
-<identificador, c>
-<identificador, a>
 <mult,>
 <identificador, c>
-<sub,>
-<identificador, a>
-<identificador, a>
+<identificador, c>
 <sub,>
 <identificador, b>
-<mult,>
-<identificador, c>
+<div,>
+<identificador, a>
